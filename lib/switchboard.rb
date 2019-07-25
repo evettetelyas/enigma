@@ -1,10 +1,19 @@
 class Switchboard
-  attr_reader :message, :key, :date
 
-  def initialize(message, key = key_generator, date = Date::today.strftime)
+  attr_reader :message, :date, :key
+
+  def initialize(message, date = default_date)
     @message = message.downcase
-    @key = key
     @date = date
+    @key = key_generator
+  end
+
+  def default_date
+    array = []
+    configured_date = Date::today.strftime.split("-")
+    year = configured_date[0].chars.pop(2).join
+    array.push(configured_date[2], configured_date[1], year).flatten
+    array.join
   end
 
   def a_shift
@@ -44,16 +53,8 @@ class Switchboard
     key_generator[3..4].to_i + d_offset
   end
 
-  def offset_num_from_date
-    configured_date = @date.split("-")
-    year = configured_date[0].chars.pop(2).join
-    array = []
-    array.push(configured_date[2], configured_date[1], year).flatten
-    array.join.to_i
-  end
-
   def offset
-    num = (offset_num_from_date * offset_num_from_date)
+    num = (@date.to_i * @date.to_i)
     final_num = num.to_s.chars.last(4)
     final_num.map {|num| num.to_i}
   end
