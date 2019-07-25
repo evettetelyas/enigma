@@ -3,11 +3,12 @@ require 'date'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/switchboard'
+require 'mocha'
 
 class SwitchboardTest < Minitest::Test
-
+binding.pry
   def setup
-    @switchboard = Switchboard.new("hi")
+    @switchboard = Switchboard.new("hi", date = 190725)
   end
 
   def test_switchboard_exist
@@ -19,16 +20,18 @@ class SwitchboardTest < Minitest::Test
     assert_equal "2019-07-25", @switchboard.date.strftime
   end
 
-  def test_key_generator
-    #add mock and stub
-  end
+  # def test_key_generator
+  #   stub(:key_generator => 12345)
+  # end
+
+  # def test_offset_num_from_date
+  #   stub(@switchboard.date => <Date: 2019-07-25 ((2458690j,0s,0n),+0s,2299161j)>)
+  #
+  #   assert_equal
+  # end
 
   def test_offset
-    #add mock and stub
-  end
 
-  def test_offset_num_from_date
-    #add mock and stub
   end
 
   def test_a_offset

@@ -1,7 +1,7 @@
 class Switchboard
   attr_reader :message, :key, :date
 
-  def initialize(message, key = key_generator, date = Date::today)
+  def initialize(message, key = key_generator, date = Date::today.strftime)
     @message = message.downcase
     @key = key
     @date = date
@@ -24,28 +24,28 @@ class Switchboard
   end
 
   def key_generator
-    num = (rand(10).to_s + rand(10).to_s + rand(10).to_s + rand(10).to_s + rand(10).to_s).to_i
+    num = (rand(0..9).to_s + rand(0..9).to_s + rand(0..9).to_s + rand(0..9).to_s + rand(0..9).to_s)
     @key_generator ||= num
   end
 
   def a_key
-    key_generator[0..1].join.to_i + a_offset
+    key_generator[0..1].to_i + a_offset
   end
 
   def b_key
-    key_generator[1..2].join.to_i + b_offset
+    key_generator[1..2].to_i + b_offset
   end
 
   def c_key
-    key_generator[2..3].join.to_i + c_offset
+    key_generator[2..3].to_i + c_offset
   end
 
   def d_key
-    key_generator[3..4].join.to_i + d_offset
+    key_generator[3..4].to_i + d_offset
   end
 
   def offset_num_from_date
-    configured_date = @date.strftime.split("-")
+    configured_date = @date.split("-")
     year = configured_date[0].chars.pop(2).join
     array = []
     array.push(configured_date[2], configured_date[1], year).flatten
