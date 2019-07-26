@@ -1,18 +1,8 @@
-require 'pry'
-require 'date'
-require 'minitest/autorun'
-require 'minitest/pride'
-require './lib/switchboard'
-require './lib/key_generator'
-require './lib/date_generator'
-require './lib/enigma'
-require 'mocha/minitest'
+require './test_helper'
 
 class EnigmaTest < Minitest::Test
 
-  binding.pry
-
-  def setup
+   def setup
     @enigma = Enigma.new
   end
 
@@ -21,11 +11,11 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_encryption
-    assert_equal "sea", @enigma.encrypt("abc", "12190", "250719")[:encryption]
+    assert_equal "sean", @enigma.encrypt("abcd", "12190", "250719")[:encryption]
   end
 
   def test_decryption
-    assert_equal "abc", @enigma.decrypt("sea", "12190", "250719")[:decryption]
+    assert_equal "abcd", @enigma.decrypt("sean", "12190", "250719")[:decryption]
   end
 
   def test_output
