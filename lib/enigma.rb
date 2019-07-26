@@ -3,7 +3,7 @@ class Enigma < Switchboard
 
   def encrypt(message, board_key = @key, board_date = @date)
     board = Switchboard.new(board_key, board_date)
-    encryption = message.chars.each_with_index.map do |char, index|
+    encryption = message.downcase.chars.each_with_index.map do |char, index|
       if index % 4 == 0
         char.tr(alphabet.join, board.a_shift)
       elsif index % 4 == 1
@@ -20,7 +20,7 @@ class Enigma < Switchboard
 
   def decrypt(message, board_key, board_date = @date)
     board = Switchboard.new(board_key, board_date)
-    decryption = message.chars.each_with_index.map do |char, index|
+    decryption = message.downcase.chars.each_with_index.map do |char, index|
       if index % 4 == 0
         char.tr(board.a_shift, alphabet.join)
       elsif index % 4 == 1
