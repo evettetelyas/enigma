@@ -45,7 +45,7 @@ class Switchboard
   def offset
     num = (@date.to_i * @date.to_i)
     final_num = num.to_s.chars.last(4)
-    final_num.map {|num| num.to_i}
+    final_num.map {|n| n.to_i}
   end
 
   def a_offset
