@@ -3,15 +3,14 @@ require 'date'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/switchboard'
+require './lib/enigma'
 require 'mocha/minitest'
 
 class SwitchboardTest < Minitest::Test
-# binding.pry
 
   def setup
-    @switchboard = Switchboard.new("hi")
-    @switchboard.stubs(:default_date).returns("250719")
-    @switchboard.stubs(:key_generator).returns("07510")
+    @switchboard = Switchboard.new("07510", "250719")
+    @switchboard_1 = Switchboard.new("12345", "020190")
   end
 
   def test_switchboard_exist
@@ -19,15 +18,12 @@ class SwitchboardTest < Minitest::Test
   end
 
   def test_attributes
-    assert_equal "hi", @switchboard.message
     assert_equal "250719", @switchboard.date
   end
 
   def test_input_new_date
-    switchboard_1 = Switchboard.new("hi", "020190")
-
-    assert_equal "020190", switchboard_1.date
-    assert_equal 20190, switchboard_1.date.to_i
+    assert_equal "020190", @switchboard_1.date
+    assert_equal 20190, @switchboard_1.date.to_i
   end
 
   def test_offset
@@ -46,9 +42,9 @@ class SwitchboardTest < Minitest::Test
   end
 
   def test_shift
-    assert_equal "n", @switchboard.a_shift.first
-    assert_equal "d", @switchboard.b_shift.first
-    assert_equal "d", @switchboard.c_shift.first
-    assert_equal "l", @switchboard.d_shift.first
+    assert_equal "nopqrstuvwxyz abcdefghijklm", @switchboard.a_shift
+    assert_equal "defghijklmnopqrstuvwxyz abc", @switchboard.b_shift
+    assert_equal "defghijklmnopqrstuvwxyz abc", @switchboard.c_shift
+    assert_equal "lmnopqrstuvwxyz abcdefghijk", @switchboard.d_shift
   end
 end
