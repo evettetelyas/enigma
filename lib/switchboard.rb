@@ -10,20 +10,16 @@ class Switchboard
     ("a".."z").to_a.push(" ")
   end
 
-  def a_shift
-    alphabet.rotate(a_key).join
-  end
-
-  def b_shift
-    alphabet.rotate(b_key).join
-  end
-
-  def c_shift
-    alphabet.rotate(c_key).join
-  end
-
-  def d_shift
-    alphabet.rotate(d_key).join
+  def shift(index)
+    if index == 0
+      alphabet.rotate(a_key).join
+    elsif index == 1
+      alphabet.rotate(b_key).join
+    elsif index == 2
+      alphabet.rotate(c_key).join
+    elsif index == 3
+      alphabet.rotate(d_key).join
+    end
   end
 
   def a_key

@@ -36,9 +36,9 @@ class SwitchboardTest < Minitest::Test
   end
 
   def test_shift
-    assert_equal "nopqrstuvwxyz abcdefghijklm", @switchboard.a_shift
-    assert_equal "defghijklmnopqrstuvwxyz abc", @switchboard.b_shift
-    assert_equal "defghijklmnopqrstuvwxyz abc", @switchboard.c_shift
-    assert_equal "lmnopqrstuvwxyz abcdefghijk", @switchboard.d_shift
+    assert_equal "nopqrstuvwxyz abcdefghijklm", @switchboard.shift(0)
+    assert_equal "defghijklmnopqrstuvwxyz abc", @switchboard.shift(1)
+    assert_equal "defghijklmnopqrstuvwxyz abc", @switchboard.shift(2)
+    assert_equal "lmnopqrstuvwxyz abcdefghijk", @switchboard.shift(3)
   end
 end
