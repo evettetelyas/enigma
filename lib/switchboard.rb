@@ -1,11 +1,9 @@
 class Switchboard
+  attr_reader :date, :key
 
-  attr_reader :message, :date, :key
-
-  def initialize(message, date = default_date)
-    @message = message.downcase
+  def initialize(key = key_generator, date = default_date)
     @date = date
-    @key = key_generator
+    @key = key
   end
 
   def default_date
@@ -16,20 +14,24 @@ class Switchboard
     array.join
   end
 
+  def alphabet
+    ("a".."z").to_a.push(" ")
+  end
+
   def a_shift
-    "a".upto("z").to_a.push(" ").rotate(a_key)
+    alphabet.rotate(a_key).join
   end
 
   def b_shift
-    "a".upto("z").to_a.push(" ").rotate(b_key)
+    alphabet.rotate(b_key).join
   end
 
   def c_shift
-    "a".upto("z").to_a.push(" ").rotate(c_key)
+    alphabet.rotate(c_key).join
   end
 
   def d_shift
-    "a".upto("z").to_a.push(" ").rotate(d_key)
+    alphabet.rotate(d_key).join
   end
 
   def key_generator
@@ -38,19 +40,19 @@ class Switchboard
   end
 
   def a_key
-    key_generator[0..1].to_i + a_offset
+    @key[0..1].to_i + a_offset
   end
 
   def b_key
-    key_generator[1..2].to_i + b_offset
+    @key[1..2].to_i + b_offset
   end
 
   def c_key
-    key_generator[2..3].to_i + c_offset
+    @key[2..3].to_i + c_offset
   end
 
   def d_key
-    key_generator[3..4].to_i + d_offset
+    @key[3..4].to_i + d_offset
   end
 
   def offset
@@ -74,5 +76,4 @@ class Switchboard
   def d_offset
     offset[3]
   end
-
 end

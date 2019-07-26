@@ -3,10 +3,11 @@ require 'date'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/switchboard'
+require './lib/enigma'
 require 'mocha/minitest'
 
 class SwitchboardTest < Minitest::Test
-# binding.pry
+binding.pry
 
   def setup
     @switchboard = Switchboard.new("hi")
