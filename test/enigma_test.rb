@@ -3,10 +3,14 @@ require 'date'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/switchboard'
+require './lib/key_generator'
+require './lib/date_generator'
 require './lib/enigma'
 require 'mocha/minitest'
 
 class EnigmaTest < Minitest::Test
+
+  binding.pry
 
   def setup
     @enigma = Enigma.new

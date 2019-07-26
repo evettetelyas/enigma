@@ -17,7 +17,6 @@ class Enigma < Switchboard
     output(:encryption, encryption, board_key, board_date)
   end
 
-
   def decrypt(message, board_key, board_date = @date)
     board = Switchboard.new(board_key, board_date)
     decryption = message.downcase.chars.each_with_index.map do |char, index|

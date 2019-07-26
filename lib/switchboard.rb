@@ -1,17 +1,9 @@
 class Switchboard
   attr_reader :date, :key
 
-  def initialize(key = key_generator, date = default_date)
+  def initialize(key = KeyGenerator.new.key, date = DateGenerator.new.default_date)
     @date = date
     @key = key
-  end
-
-  def default_date
-    array = []
-    configured_date = Date::today.strftime.split("-")
-    year = configured_date[0].chars.pop(2).join
-    array.push(configured_date[2], configured_date[1], year).flatten
-    array.join
   end
 
   def alphabet
@@ -32,11 +24,6 @@ class Switchboard
 
   def d_shift
     alphabet.rotate(d_key).join
-  end
-
-  def key_generator
-    num = (rand(0..9).to_s + rand(0..9).to_s + rand(0..9).to_s + rand(0..9).to_s + rand(0..9).to_s)
-    @key_generator ||= num
   end
 
   def a_key
