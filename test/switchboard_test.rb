@@ -1,4 +1,5 @@
 require './test_helper'
+binding.pry
 
 class SwitchboardTest < Minitest::Test
 
@@ -21,18 +22,17 @@ class SwitchboardTest < Minitest::Test
   end
 
   def test_offset
-    assert_equal [6,9,6,1], @switchboard.offset
-    assert_equal 6, @switchboard.a_offset
-    assert_equal 9, @switchboard.b_offset
-    assert_equal 6, @switchboard.c_offset
-    assert_equal 1, @switchboard.d_offset
+    assert_equal 6, @switchboard.offset(0)
+    assert_equal 9, @switchboard.offset(1)
+    assert_equal 6, @switchboard.offset(2)
+    assert_equal 1, @switchboard.offset(3)
   end
 
-  def test_keys
-    assert_equal 13, @switchboard.a_key
-    assert_equal 84, @switchboard.b_key
-    assert_equal 57, @switchboard.c_key
-    assert_equal 11, @switchboard.d_key
+  def test_key
+    assert_equal 13, @switchboard.key(0)
+    assert_equal 84, @switchboard.key(1)
+    assert_equal 57, @switchboard.key(2)
+    assert_equal 11, @switchboard.key(3)
   end
 
   def test_shift
