@@ -14,7 +14,7 @@ class Enigma < Switchboard
         char.tr(alphabet.join, board.d_shift)
       end
     end.join
-    output(:Encryption, encryption, board_key, board_date)
+    output(:encryption, encryption, board_key, board_date)
   end
 
 
@@ -31,7 +31,7 @@ class Enigma < Switchboard
         char.tr(board.d_shift, alphabet.join)
       end
     end.join
-    output(:Decryption, decryption, board_key, board_date)
+    output(:decryption, decryption, board_key, board_date)
   end
 
   def output(type, message, key, date)
