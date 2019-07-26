@@ -1,12 +1,4 @@
-require 'pry'
-require 'date'
-require 'minitest/autorun'
-require 'minitest/pride'
-require './lib/switchboard'
-require './lib/key_generator'
-require './lib/date_generator'
-require './lib/enigma'
-require 'mocha/minitest'
+require './test_helper'
 
 class SwitchboardTest < Minitest::Test
 
