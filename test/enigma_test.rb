@@ -2,7 +2,7 @@ require './test_helper'
 
 class EnigmaTest < Minitest::Test
 
-   def setup
+  def setup
     @enigma = Enigma.new
   end
 

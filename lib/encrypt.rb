@@ -2,6 +2,8 @@ require 'file'
 require './lib/enigma'
 require './lib/encrypt'
 require './lib/switchboard'
+require './lib/date_generator'
+require './lib/key_generator'
 
 enigma = Enigma.new
 

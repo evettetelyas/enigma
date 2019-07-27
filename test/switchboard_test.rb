@@ -1,5 +1,6 @@
 require './test_helper'
 
+binding.pry
 class SwitchboardTest < Minitest::Test
 
   def setup
@@ -21,24 +22,23 @@ class SwitchboardTest < Minitest::Test
   end
 
   def test_offset
-    assert_equal [6,9,6,1], @switchboard.offset
-    assert_equal 6, @switchboard.a_offset
-    assert_equal 9, @switchboard.b_offset
-    assert_equal 6, @switchboard.c_offset
-    assert_equal 1, @switchboard.d_offset
+    assert_equal 6, @switchboard.offset(0)
+    assert_equal 9, @switchboard.offset(1)
+    assert_equal 6, @switchboard.offset(2)
+    assert_equal 1, @switchboard.offset(3)
   end
 
   def test_keys
-    assert_equal 13, @switchboard.a_key
-    assert_equal 84, @switchboard.b_key
-    assert_equal 57, @switchboard.c_key
-    assert_equal 11, @switchboard.d_key
+    assert_equal 13, @switchboard.keys(0)
+    assert_equal 84, @switchboard.keys(1)
+    assert_equal 57, @switchboard.keys(2)
+    assert_equal 11, @switchboard.keys(3)
   end
 
   def test_shift
-    assert_equal "nopqrstuvwxyz abcdefghijklm", @switchboard.a_shift
-    assert_equal "defghijklmnopqrstuvwxyz abc", @switchboard.b_shift
-    assert_equal "defghijklmnopqrstuvwxyz abc", @switchboard.c_shift
-    assert_equal "lmnopqrstuvwxyz abcdefghijk", @switchboard.d_shift
+    assert_equal "nopqrstuvwxyz abcdefghijklm", @switchboard.shift(0)
+    assert_equal "defghijklmnopqrstuvwxyz abc", @switchboard.shift(1)
+    assert_equal "defghijklmnopqrstuvwxyz abc", @switchboard.shift(2)
+    assert_equal "lmnopqrstuvwxyz abcdefghijk", @switchboard.shift(3)
   end
 end
