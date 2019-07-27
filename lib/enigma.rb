@@ -1,4 +1,7 @@
+require './lib/cracker'
+
 class Enigma < Switchboard
+  include Cracker
   attr_reader :date, :key
 
   def encrypt(message, board_key = @key, board_date = @date)
@@ -15,6 +18,11 @@ class Enigma < Switchboard
       char.tr(board.shift(index % 4), alphabet.join)
     end.join
     output(:decryption, decryption, board_key, board_date)
+  end
+
+  def crack(message, board_date = @date)
+    cracked_key = encrypt(crack_message(message, board_date), KeyGenerator.key, board_date)[:key]
+    output(:decryption, crack_message(message, board_date), cracked_key, board_date)
   end
 
   def output(type, message, key, date)

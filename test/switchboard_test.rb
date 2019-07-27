@@ -1,6 +1,6 @@
 require './test_helper'
-binding.pry
 
+binding.pry
 class SwitchboardTest < Minitest::Test
 
   def setup
@@ -28,11 +28,11 @@ class SwitchboardTest < Minitest::Test
     assert_equal 1, @switchboard.offset(3)
   end
 
-  def test_key
-    assert_equal 13, @switchboard.key(0)
-    assert_equal 84, @switchboard.key(1)
-    assert_equal 57, @switchboard.key(2)
-    assert_equal 11, @switchboard.key(3)
+  def test_keys
+    assert_equal 13, @switchboard.keys(0)
+    assert_equal 84, @switchboard.keys(1)
+    assert_equal 57, @switchboard.keys(2)
+    assert_equal 11, @switchboard.keys(3)
   end
 
   def test_shift

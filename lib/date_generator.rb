@@ -1,6 +1,6 @@
 class DateGenerator
 
-  def default_date
+  def self.default_date
     array = []
     configured_date = Date::today.strftime.split("-")
     year = configured_date[0].chars.pop(2).join
