@@ -38,8 +38,7 @@ module Cracker
 
   def shift_abcd_cracked_keys(message, board_date)
     board = Switchboard.new(KeyGenerator.key, board_date)
-    msg = message.chars.last(4).join
-    decryption = message_data(message).map do |char, index|
+    message_data(message).map do |char, index|
       if index % 4 == 0
         char.tr((board.crack_shift(space_shift_ord_diff(message)).join), alphabet.join)
       elsif index % 4 == 1
@@ -54,8 +53,7 @@ module Cracker
 
   def shift_bcda_cracked_keys(message, board_date)
     board = Switchboard.new(KeyGenerator.key, board_date)
-    msg = message.chars.last(4).join
-    decryption = message_data(message).map do |char, index|
+    message_data(message).map do |char, index|
       if index % 4 == 1
         char.tr((board.crack_shift(space_shift_ord_diff(message)).join), alphabet.join)
       elsif index % 4 == 2
@@ -70,8 +68,7 @@ module Cracker
 
   def shift_cdab_cracked_keys(message, board_date)
     board = Switchboard.new(KeyGenerator.key, board_date)
-    msg = message.chars.last(4).join
-    decryption = message_data(message).map do |char, index|
+    message_data(message).map do |char, index|
       if index % 4 == 2
         char.tr((board.crack_shift(space_shift_ord_diff(message)).join), alphabet.join)
       elsif index % 4 == 3
@@ -86,8 +83,7 @@ module Cracker
 
   def shift_dabc_cracked_keys(message, board_date)
     board = Switchboard.new(KeyGenerator.key, board_date)
-    msg = message.chars.last(4).join
-    decryption = message_data(message).map do |char, index|
+    message_data(message).map do |char, index|
       if index % 4 == 3
         char.tr((board.crack_shift(space_shift_ord_diff(message)).join), alphabet.join)
       elsif index % 4 == 0
