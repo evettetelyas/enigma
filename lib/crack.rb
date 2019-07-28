@@ -13,4 +13,4 @@ cracked_file = File.open(ARGV[1], "w")
 enigma.crack(message, ARGV[2])
 cracked_file.write(enigma.crack(message, ARGV[2])[:decryption])
 
-puts "Created cracked.txt with the key #{enigma.crack(message, ARGV[2])[:key]}, and date #{enigma.crack(message, ARGV[2])[:date]}"
+puts "Created #{ARGV[1]} with the key #{enigma.crack(message, ARGV[2])[:key]}, and date #{enigma.crack(message, ARGV[2])[:date]}"
