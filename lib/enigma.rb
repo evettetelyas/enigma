@@ -1,4 +1,5 @@
 require './lib/cracker'
+require './lib/switchboard'
 
 class Enigma < Switchboard
   include Cracker
