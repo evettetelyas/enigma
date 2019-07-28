@@ -1,6 +1,5 @@
 require './test_helper'
 
-binding.pry
 class SwitchboardTest < Minitest::Test
 
   def setup
@@ -40,5 +39,9 @@ class SwitchboardTest < Minitest::Test
     assert_equal "defghijklmnopqrstuvwxyz abc", @switchboard.shift(1)
     assert_equal "defghijklmnopqrstuvwxyz abc", @switchboard.shift(2)
     assert_equal "lmnopqrstuvwxyz abcdefghijk", @switchboard.shift(3)
+  end
+
+  def test_crack_shift
+    assert_equal "bcdefghijklmnopqrstuvwxyz a", @switchboard.crack_shift(1).join
   end
 end
