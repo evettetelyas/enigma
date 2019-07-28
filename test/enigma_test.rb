@@ -24,4 +24,11 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.encrypt("abc", "12190", "250719")
   end
 
+  def test_crack
+    assert_equal "abcd end", @enigma.crack("zzqcybac", "270719")[:decryption]
+    assert_equal "abcde end", @enigma.crack("kmrloktvn", "270719")[:decryption]
+    assert_equal "abcdef end", @enigma.crack("okbssoztam", "270719")[:decryption]
+    assert_equal "abcdefg end", @enigma.crack("qdbxuhftupc", "270719")[:decryption]
+  end
+  
 end
