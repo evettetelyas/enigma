@@ -1,14 +1,16 @@
-require 'file'
+require 'date'
+require 'pry'
 require './lib/enigma'
-require './lib/encrypt'
 require './lib/switchboard'
 require './lib/date_generator'
 require './lib/key_generator'
+require './lib/cracker'
 
 enigma = Enigma.new
+message = File.readlines(ARGV[0], "r").join.chomp
+encrypted_file = File.open(ARGV[1], "w")
 
-File.read(message.txt){|line| enigma.encrypt(line)}
+enigma.encrypt(message)
+encrypted_file.write(enigma.encrypt(message)[:encryption])
 
-File.new(encrypted.txt).write(encrypted.txt, enigma.encrypt[:encryption])
-
-puts "Created encrypted.txt with the key #{enigma.encrypt[:key]}, and date #{enigma.encrypt[:date]}"
+puts "Created encrypted.txt with the key #{enigma.encrypt(message)[:key]}, and date #{enigma.encrypt(message)[:date]}"
