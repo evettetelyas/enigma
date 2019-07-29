@@ -8,10 +8,6 @@ module Cracker
     (letter_ord[0] - letter_ord[1])
   end
 
-  def shift_type(message)
-    message.chars.count % 4
-  end
-
   def shift_ary
     0.upto(3).to_a
   end
@@ -32,13 +28,13 @@ module Cracker
   end
 
   def crack_message(message, board_date)
-    if shift_type(message) == 0
+    if message.chars.count % 4 == 0
       end_shift(message, board_date, 0)
-    elsif shift_type(message) == 1
+    elsif message.chars.count % 4 == 1
       end_shift(message, board_date, 1)
-    elsif shift_type(message) == 2
+    elsif message.chars.count % 4 == 2
       end_shift(message, board_date, 2)
-    elsif shift_type(message) == 3
+    elsif message.chars.count % 4 == 3
       end_shift(message, board_date, 3)
     end
   end
