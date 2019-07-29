@@ -16,7 +16,7 @@ class CrackerTest < Minitest::Test
 
 
   def test_end_ord_diff
-    assert_equal 5, @enigma.end_shift_ord_diff("omlinpwi", 3, "d")
+    assert_equal 5, @enigma.end_ord_diff("omlinpwi", 3, "d")
   end
 
   def test_cracked_message
