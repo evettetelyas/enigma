@@ -8,10 +8,6 @@ module Cracker
     (letter_ord[0] - letter_ord[1])
   end
 
-  # def index_mod4
-  #   0.upto(3).to_a
-  # end
-
   def shift_abcd(message, board_date)
     board = Switchboard.new(KeyGenerator.key, board_date)
     message_data(message).map do |char, index|
