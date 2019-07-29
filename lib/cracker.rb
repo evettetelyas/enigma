@@ -16,16 +16,16 @@ module Cracker
     0.upto(3).to_a
   end
 
-  def end_shift(message, board_date, shift_type)
+  def end_shift(message, board_date, end_rotation)
     board = Switchboard.new(KeyGenerator.key, board_date)
     message_data(message).map do |char, index|
-      if index % 4 == shift_ary.rotate(shift_type)[0]
+      if index % 4 == shift_ary.rotate(end_rotation)[0]
         char.tr((board.crack_shift(end_ord_diff(message, 0, "{")).join), alphabet.join)
-      elsif index % 4 == shift_ary.rotate(shift_type)[1]
+      elsif index % 4 == shift_ary.rotate(end_rotation)[1]
         char.tr((board.crack_shift(end_ord_diff(message, 1, "e")).join), alphabet.join)
-      elsif index % 4 == shift_ary.rotate(shift_type)[2]
+      elsif index % 4 == shift_ary.rotate(end_rotation)[2]
         char.tr((board.crack_shift(end_ord_diff(message, 2, "n")).join), alphabet.join)
-      elsif index % 4 == shift_ary.rotate(shift_type)[3]
+      elsif index % 4 == shift_ary.rotate(end_rotation)[3]
         char.tr((board.crack_shift(end_ord_diff(message, 3, "d")).join), alphabet.join)
       end
     end.join
