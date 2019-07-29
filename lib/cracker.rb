@@ -2,7 +2,7 @@ module Cracker
 
   def end_ord_diff(message, index, char)
     letter_ord = [0,0]
-    msg = message.chars.last(4)
+    msg = message.chars.last(4).map {|letter| letter.gsub(" ", "{")}
     letter_ord[0] += msg[index].ord
     letter_ord[1] += char.ord
     (letter_ord[0] - letter_ord[1])
