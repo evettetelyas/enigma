@@ -8,16 +8,6 @@ module Cracker
     (letter_ord[0] - letter_ord[1])
   end
 
-  # def index_array(index_mod4)
-  #   0.upto(3).to_a.rotate(index_mod4)
-  # end
-  #
-  # def shift_cracked_keys(message, board_date)
-  #   index_array(index_mod4).each do |abcd_shift|
-  #     message_data(message).map do |char, index|
-  #
-  # end
-
   def shift_abcd_cracked_keys(message, board_date)
     board = Switchboard.new(KeyGenerator.key, board_date)
     message_data(message).map do |char, index|
