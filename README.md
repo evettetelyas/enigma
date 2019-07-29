@@ -10,7 +10,7 @@ Enigma was complete with the required 4 classes. I utilized class methods, inher
 - Testing: 3.5 =>
 testing is complete at 100% coverage. I still do not really see the point of using Mocks or Stubs in a finished project.
 
-- Version Control => 3.5
+- Version Control: 3.5 =>
 I definitely commited multiple ideas at the same time, but my pulls and commits are high. I also still have a hate/hate relationship with Github. 
 
 
