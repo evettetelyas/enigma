@@ -1,7 +1,7 @@
 # Enigma
 
 ### self eval
-- functionality: 4 => 
+- Functionality: 4 => 
   iterations 1-4 work as expected
 
 - OOP: 3.9 => 
