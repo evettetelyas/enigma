@@ -8,75 +8,38 @@ module Cracker
     (letter_ord[0] - letter_ord[1])
   end
 
-  def shift_abcd(message, board_date)
-    board = Switchboard.new(KeyGenerator.key, board_date)
-    message_data(message).map do |char, index|
-      if index % 4 == 0
-        char.tr((board.crack_shift(end_ord_diff(message, 0, "{")).join), alphabet.join)
-      elsif index % 4 == 1
-        char.tr((board.crack_shift(end_ord_diff(message, 1, "e")).join), alphabet.join)
-      elsif index % 4 == 2
-        char.tr((board.crack_shift(end_ord_diff(message, 2, "n")).join), alphabet.join)
-      elsif index % 4 == 3
-        char.tr((board.crack_shift(end_ord_diff(message, 3, "d")).join), alphabet.join)
-      end
-    end.join
+  def shift_type(message)
+    message.chars.count % 4
   end
 
-  def shift_bcda(message, board_date)
-    board = Switchboard.new(KeyGenerator.key, board_date)
-    message_data(message).map do |char, index|
-      if index % 4 == 1
-        char.tr((board.crack_shift(end_ord_diff(message, 0, "{")).join), alphabet.join)
-      elsif index % 4 == 2
-        char.tr((board.crack_shift(end_ord_diff(message, 1, "e")).join), alphabet.join)
-      elsif index % 4 == 3
-        char.tr((board.crack_shift(end_ord_diff(message, 2, "n")).join), alphabet.join)
-      elsif index % 4 == 0
-        char.tr((board.crack_shift(end_ord_diff(message, 3, "d")).join), alphabet.join)
-      end
-    end.join
+  def shift_ary
+    0.upto(3).to_a
   end
 
-  def shift_cdab(message, board_date)
+  def end_shift(message, board_date, shift_type)
     board = Switchboard.new(KeyGenerator.key, board_date)
     message_data(message).map do |char, index|
-      if index % 4 == 2
+      if index % 4 == shift_ary.rotate(shift_type)[0]
         char.tr((board.crack_shift(end_ord_diff(message, 0, "{")).join), alphabet.join)
-      elsif index % 4 == 3
+      elsif index % 4 == shift_ary.rotate(shift_type)[1]
         char.tr((board.crack_shift(end_ord_diff(message, 1, "e")).join), alphabet.join)
-      elsif index % 4 == 0
+      elsif index % 4 == shift_ary.rotate(shift_type)[2]
         char.tr((board.crack_shift(end_ord_diff(message, 2, "n")).join), alphabet.join)
-      elsif index % 4 == 1
-        char.tr((board.crack_shift(end_ord_diff(message, 3, "d")).join), alphabet.join)
-      end
-    end.join
-  end
-
-  def shift_dabc(message, board_date)
-    board = Switchboard.new(KeyGenerator.key, board_date)
-    message_data(message).map do |char, index|
-      if index % 4 == 3
-        char.tr((board.crack_shift(end_ord_diff(message, 0, "{")).join), alphabet.join)
-      elsif index % 4 == 0
-        char.tr((board.crack_shift(end_ord_diff(message, 1, "e")).join), alphabet.join)
-      elsif index % 4 == 1
-        char.tr((board.crack_shift(end_ord_diff(message, 2, "n")).join), alphabet.join)
-      elsif index % 4 == 2
+      elsif index % 4 == shift_ary.rotate(shift_type)[3]
         char.tr((board.crack_shift(end_ord_diff(message, 3, "d")).join), alphabet.join)
       end
     end.join
   end
 
   def crack_message(message, board_date)
-    if message.chars.count % 4 == 0
-      shift_abcd(message, board_date)
-    elsif message.chars.count % 4 == 1
-      shift_bcda(message, board_date)
-    elsif message.chars.count % 4 == 2
-      shift_cdab(message, board_date)
-    elsif message.chars.count % 4 == 3
-      shift_dabc(message, board_date)
+    if shift_type(message) == 0
+      end_shift(message, board_date, 0)
+    elsif shift_type(message) == 1
+      end_shift(message, board_date, 1)
+    elsif shift_type(message) == 2
+      end_shift(message, board_date, 2)
+    elsif shift_type(message) == 3
+      end_shift(message, board_date, 3)
     end
   end
 
