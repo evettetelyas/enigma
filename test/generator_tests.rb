@@ -7,7 +7,7 @@ class GeneratorTest < Minitest::Test
     @today = DateGenerator.default_date
   end
 
-  def test_key_gen_exist
+  def test_gens_exist
     assert_instance_of KeyGenerator, @random_key
     assert_instance_of DateGenerator, @today
   end
