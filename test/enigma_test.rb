@@ -30,5 +30,5 @@ class EnigmaTest < Minitest::Test
     assert_equal "abcdef end", @enigma.crack("okbssoztam", "270719")[:decryption]
     assert_equal "abcdefg end", @enigma.crack("qdbxuhftupc", "270719")[:decryption]
   end
-  
+
 end
