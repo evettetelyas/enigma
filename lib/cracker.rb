@@ -28,15 +28,7 @@ module Cracker
   end
 
   def crack_message(message, board_date)
-    if message.chars.count % 4 == 0
-      end_shift(message, board_date, 0)
-    elsif message.chars.count % 4 == 1
-      end_shift(message, board_date, 1)
-    elsif message.chars.count % 4 == 2
-      end_shift(message, board_date, 2)
-    elsif message.chars.count % 4 == 3
-      end_shift(message, board_date, 3)
-    end
+    end_shift(message, board_date, message.chars.count % 4)
   end
 
 end

@@ -2,9 +2,9 @@ class Switchboard
 
   attr_accessor :date, :key
 
-  def initialize(key = KeyGenerator.key, date = DateGenerator.default_date)
-    @date = date
-    @key = key
+  def initialize(key = nil, date = nil)
+    @date = date || DateGenerator.default_date
+    @key = key || KeyGenerator.key
   end
 
   def alphabet
@@ -24,9 +24,8 @@ class Switchboard
   end
 
   def offset(index_mod4)
-    num = (@date.to_i * @date.to_i)
-    final_num = num.to_s.chars.last(4)
-    final_num[index_mod4].to_i
+    num = (@date.to_i * @date.to_i).to_s.chars.last(4)
+    num[index_mod4].to_i
   end
 
   def crack_shift(diff)
